@@ -14,12 +14,11 @@
 # limitations under the License.
 #
 
-## overlays
-# The F320 uses different overlays so use these only if
-# we're NOT building F320
-ifneq ($(TARGET_DEVICE),f320)
+# Call common vendor
+$(call inherit-product-if-exists, vendor/lge/g2-common/g2-common-vendor.mk)
+
+# Overlays
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
-endif
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
